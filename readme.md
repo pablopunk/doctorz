@@ -5,20 +5,20 @@
 
 ## Config
 
-1. Make sure you have a Sendgrind account that's setup to send emails from a specific address.  
+1. Create a Sendgrid account
+2. Setup an "sender" email address in Sendgrid
 2. Get a Sendgrid API key
-3. Set your env vars (and don't forget to pass them to docker)
-```bash
-SENDGRID_API_KEY=your-key-here
-EMAIL_FROM=no-reply@example.com
-EMAIL_TO=your-email@example.com
 ```
 
 
 ## Docker
 
 ```bash
-docker build . -t doctorz && docker run --privileged doctorz
+docker run --privileged \
+-e SENDGRID_API_KEY=your-api-key \
+-e EMAIL_FROM=no-reply@example.com \
+-e EMAIL_TO=your-email@example.com \
+pablopunk/doctorz
 ```
 
 ## Docker compose
@@ -29,9 +29,9 @@ docker build . -t doctorz && docker run --privileged doctorz
     image: pablopunk/doctorz
     privileged: true
     environment:
-      - SENDGRID_API_KEY=$SENDGRID_API_KEY
-      - EMAIL_FROM=$EMAIL_FROM
-      - EMAIL_TO=$EMAIL_TO
+      - SENDGRID_API_KEY=your-api-key
+      - EMAIL_FROM=no-reply@example.com
+      - EMAIL_TO=your-email@example.com
 ```
 
 
