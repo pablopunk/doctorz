@@ -8,7 +8,6 @@
 1. Create a Sendgrid account
 2. Setup an "sender" email address in Sendgrid
 2. Get a Sendgrid API key
-```
 
 
 ## Docker
