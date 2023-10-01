@@ -36,4 +36,8 @@ pablopunk/doctorz
 
 ## Without docker
 
-It's meant to run in **Docker**, but if you wanna run it manually I use [bun.sh](https://bun.sh) to run it instead of nodeJS. Make sure you copy `.env.example` and replace it with your values.
+It's meant to run in **Docker**, but if you wanna run it manually I use [bun.sh](https://bun.sh) to run it instead of nodeJS. Make sure you copy `.env.example` to `.env` and replace it with your own values.
+
+```bash
+bun run src/index.ts
+```
