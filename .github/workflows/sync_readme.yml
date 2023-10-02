@@ -1,0 +1,21 @@
+---
+name: Sync Readme to Dockerhub
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Sync
+        uses: ms-jpq/sync-dockerhub-readme@v1
+        with:
+          username: pablopunk
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          repository: pablopunk/doctorz
+          readme: "./readme.md"
