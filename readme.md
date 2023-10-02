@@ -17,6 +17,7 @@ docker run --privileged \
 -e SENDGRID_API_KEY=your-api-key \
 -e EMAIL_FROM=no-reply@example.com \
 -e EMAIL_TO=your-email@example.com \
+-e INTERVAL=600 \ # if not provided, defaults to 900sec (15 minutes)
 pablopunk/doctorz
 ```
 
@@ -31,6 +32,7 @@ pablopunk/doctorz
       - SENDGRID_API_KEY=your-api-key
       - EMAIL_FROM=no-reply@example.com
       - EMAIL_TO=your-email@example.com
+      - INTERVAL=600 # if not provided, defaults to 900sec (15 minutes)
 ```
 
 

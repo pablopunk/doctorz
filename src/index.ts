@@ -3,6 +3,10 @@ import { sendEmail } from "./email";
 
 const EMAIL_FROM = process.env.EMAIL_FROM;
 const EMAIL_TO = process.env.EMAIL_TO;
+const DEFAULT_INTERVAL_SEC = 15 * 60; // 15 minutes
+const INTERVAL = parseInt(
+  process.env.INTERVAL || DEFAULT_INTERVAL_SEC.toString(),
+);
 
 const outputMeansDegraded = (output: string) => output.includes("DEGRADED");
 
@@ -42,4 +46,4 @@ ${stdout}
 }
 
 checkZpool();
-setInterval(checkZpool, 15 * 60 * 1000);
+setInterval(checkZpool, INTERVAL * 1000);
