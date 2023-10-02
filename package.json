@@ -2,6 +2,9 @@
   "name": "doctorz",
   "module": "index.ts",
   "type": "module",
+  "scripts": {
+    "build-and-push": "docker build . -t pablopunk/doctorz && docker push pablopunk/doctorz"
+  },
   "devDependencies": {
     "bun-types": "latest"
   },
