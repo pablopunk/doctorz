@@ -42,6 +42,6 @@ It's meant to run in **Docker**, but if you wanna run it manually I use [bun.sh]
 
 ```bash
 git clone https://github.com/pablopunk/doctorz && cd doctorz
-cp .env.example .env
+cp .env.example .env # edit .env with your own values
 bun run src/index.ts
 ```
