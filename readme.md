@@ -51,8 +51,8 @@ bun run src/index.ts
 You'll get an email like this:
 
 > ZFS pool is degraded
-> Fix it ASAP
-> Full output below:
-> ...
+Fix it ASAP
+Full output below:
+...
 
 And then it will not send you an email until you fix it.
