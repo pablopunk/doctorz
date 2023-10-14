@@ -55,4 +55,4 @@ You'll get an email like this:
 > Full output below:
 > ...
 
-And then it will not check again using INTERVAL time, but it will **wait for 12 hours so you have time to fix it** and don't get a gazillion emails in the mean time.
+And then it will not send you an email until you fix it.
