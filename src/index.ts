@@ -1,5 +1,5 @@
 import child_process from "child_process";
-import { sendEmail } from "./email";
+import { sendDegradedEmail, sendFixedEmail } from "./email";
 
 const EMAIL_FROM = process.env.EMAIL_FROM;
 const EMAIL_TO = process.env.EMAIL_TO;
@@ -14,6 +14,8 @@ if (!EMAIL_TO || !EMAIL_FROM) {
   console.error("You need to specify EMAIL_TO and EMAIL_FROM env vars");
 }
 
+let wasDegraded = false;
+
 function checkZpool() {
   console.log("Checking zpool status...");
   child_process.exec("zpool status", (error, stdout, stderr) => {
@@ -26,27 +28,27 @@ function checkZpool() {
     }
 
     if (outputMeansDegraded(stdout)) {
-      console.log("DEGRADED. Sending email...");
-      sendEmail(
-        EMAIL_FROM!,
-        EMAIL_TO!,
-        "ZFS pool status",
-        `
-<h1>ZFS pool is degraded</h1>
-<h2>Fix it ASAP</h2>
-<h3>Full output below</h3>
+      if (wasDegraded) {
+        return; // ignore, already sent email
+      }
 
-<code>
-${stdout}
-</code>
-`,
-      );
-      setInterval(checkZpool, 12 * 60 * 1000); // check 12 hours later
+      wasDegraded = true;
+
+      console.log("DEGRADED. Sending email...");
+      sendDegradedEmail(EMAIL_FROM!, EMAIL_TO!, stdout);
+      return;
+    }
+
+    if (wasDegraded) {
+      console.log("FIXED. Sending email...");
+      sendFixedEmail(EMAIL_FROM!, EMAIL_TO!, stdout);
     } else {
       console.log("OK");
-      setInterval(checkZpool, INTERVAL * 1000); // check again in X minutes
     }
+
+    wasDegraded = false;
   });
 }
 
 checkZpool();
+setInterval(checkZpool, INTERVAL * 1000);

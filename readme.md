@@ -45,3 +45,14 @@ git clone https://github.com/pablopunk/doctorz && cd doctorz
 cp .env.example .env # edit .env with your own values
 bun run src/index.ts
 ```
+
+## If it's degraded
+
+You'll get an email like this:
+
+> ZFS pool is degraded
+> Fix it ASAP
+> Full output below:
+> ...
+
+And then it will not check again using INTERVAL time, but it will **wait for 12 hours so you have time to fix it** and don't get a gazillion emails in the mean time.
