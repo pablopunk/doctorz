@@ -48,8 +48,7 @@ bun run src/index.ts
 
 ## If it's degraded
 
-You'll get an email like this:
+You'll get an email when it's detected, and won't get notified again until is fixed:
 
-> ZFS pool is degraded<br>Fix it ASAP<br>Full output below:<br>...
-
-And then it will not send you an email until you fix it.
+<img src="./res/degraded.png" width="40%" />
+<img src="./res/fixed.png" width="40%" />
