@@ -50,5 +50,7 @@ bun run src/index.ts
 
 You'll get an email when it's detected, and won't get notified again until is fixed:
 
+<p>
 <img src="./res/degraded.png" width="40%" />
 <img src="./res/fixed.png" width="40%" />
+</p>
