@@ -41,9 +41,12 @@ ${stdout}
 </code>
 `,
       );
-    } else console.log("OK");
+      setInterval(checkZpool, 12 * 60 * 1000); // check 12 hours later
+    } else {
+      console.log("OK");
+      setInterval(checkZpool, INTERVAL * 1000); // check again in X minutes
+    }
   });
 }
 
 checkZpool();
-setInterval(checkZpool, INTERVAL * 1000);
